@@ -15,3 +15,8 @@ footer {
 .product {
     width: 100%;
 }
+
+/*TODO: actually center search bar inside navbar*/
+.search-bar{
+    margin-top:7px;
+}
