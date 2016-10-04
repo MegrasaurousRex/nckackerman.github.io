@@ -1,0 +1,22 @@
+.navbar {
+    margin-bottom: 50px;
+    border-radius: 0;
+}
+
+.jumbotron {
+    margin-bottom: 0;
+}
+
+footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+}
+
+.product {
+    width: 100%;
+}
+
+/*TODO: actually center search bar inside navbar*/
+.search-bar{
+    margin-top:7px;
+}
