@@ -8,6 +8,7 @@
         var client = algolia.Client('16KBF0AU4T', '449d73ff5b0940fecddb1c144c2baaae');
         var index = client.initIndex('bestbuy_data');
         var vm = this;
+        vm.searchTerm = "";
         vm.loading = true;
         vm.results = {};
         vm.search = search;
@@ -37,7 +38,7 @@
                     }
                 }
             };
-        };
+        }
 
         $scope.$on('autocomplete:selected', function(event, suggestion, dataset) {
             vm.searchTerm = suggestion.name;
