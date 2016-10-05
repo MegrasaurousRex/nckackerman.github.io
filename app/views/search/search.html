@@ -1,50 +1,52 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">BLACK FRIDAY DEAL</div>
-                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive product" Category alt="Image"></div>
-                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="panel panel-danger">
-                <div class="panel-heading">BLACK FRIDAY DEAL</div>
-                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive product" alt="Image"></div>
-                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="panel panel-success">
-                <div class="panel-heading">BLACK FRIDAY DEAL</div>
-                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive product" Category alt="Image"></div>
-                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-            </div>
+    <div class="row text-center search-bar">
+        Powered by
+        <a href="https://www.algolia.com/"><img class="product" src="./Algolia_logo_bg-white.svg"></a>
+    </div>
+    <div class="row search-bar">
+        <div class="col-lg-12">
+            <form ng-submit="myFunc()">
+                <div class="input-group">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                    <input type="text" id="search-input" ng-model="vm.searchTerm" autocomplete aa-datasets="vm.getDatasets()" class="form-control" aria-label="...">
+                    <div class="input-group-btn">
+                        <button id="search-button" class="btn btn-default" ng-click="vm.search()" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-<br>
 <div class="container">
     <div class="row">
-        <div class="col-sm-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">BLACK FRIDAY DEAL</div>
-                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive product" Category alt="Image"></div>
-                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+        <div ng-hide="vm.results.length || vm.loading" class="text-center">
+            <h3>Hmmm, No results to show for: {{vm.searchTerm}}</h3>
+        </div>
+        <div ng-show="vm.loading" class="text-center">
+            <div class="col-lg-6">
+                <span><i class="fa fa-spinner fa-5x fa-spin"></i>Searching...</span>
             </div>
         </div>
-        <div class="col-sm-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">BLACK FRIDAY DEAL</div>
-                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive product" Category alt="Image"></div>
-                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">BLACK FRIDAY DEAL</div>
-                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive product" Category alt="Image"></div>
-                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+        <div ng-repeat="result in vm.results">
+            <div id="wrap">
+                <div class="panel panel-default panel-horizontal">
+                    <div class="panel-heading text-center">
+                        <h3 class="panel-title"><img class="image-responsive product" src="{{result.image}}?text=IMAGE" Category alt="Image">
+                        </h3>
+                        <p class="text-primary">${{result.price}} <span ng-show="{{result.free_shipping}}"> + Free shipping</span></p>
+                    </div>
+                    <div class="panel-body"><span class="text-primary">{{result.name}}</span>
+                        <br><span class="text-muted">{{result.description}}</span></div>
+                </div>
             </div>
         </div>
     </div>
